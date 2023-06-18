@@ -10,10 +10,10 @@
   --primary-2-color: 255, 255, 255;
   --primary-3-color: 52, 73, 94;
 
-  --bg-1: rgb(244, 246, 249);
+  --bg-1: rgb(255, 255, 255);
   --bg-2: rgb(232, 248, 245);
   --bg-3: rgb(214, 234, 248);
-  --bg-1-color: 244, 246, 249;
+  --bg-1-color: 255, 255, 255;
   --bg-2-color: 232, 248, 245;
   --bg-3-color: 214, 234, 248;
 
@@ -87,7 +87,6 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
   color: var(--primary-1);
-  background-color: var(--bg-3);
 }
 
 ::-moz-selection {
