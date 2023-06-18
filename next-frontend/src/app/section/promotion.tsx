@@ -19,7 +19,7 @@ const PromotionSection = () => {
                   For the summer season
                 </div>
               </div>
-              <div className="relative h-[210px] w-[400px]">
+              <div className="relative h-[210px] w-[430px] object-cover">
                 <Image
                   src={Promo1}
                   alt="For Summer Season Image"

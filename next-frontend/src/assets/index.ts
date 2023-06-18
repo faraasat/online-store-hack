@@ -7,6 +7,7 @@ import Promo1 from "./promo-1.png";
 import Promo2 from "./promo-2.png";
 import Promo3 from "./promo-3.png";
 import Feature from "./feature.png";
+import About from "./about.jpg";
 
 export {
   HeroImage,
@@ -18,4 +19,5 @@ export {
   Promo2,
   Promo3,
   Feature,
+  About,
 };

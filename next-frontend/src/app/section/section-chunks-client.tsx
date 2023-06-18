@@ -28,7 +28,7 @@ export const HeroLinkButton = () => {
   return (
     <LinkButtonComponent
       btnText="Start Shopping"
-      href="/all-products"
+      href="/products"
       showGradient={true}
       Icon={{
         Img: HiShoppingCart,
@@ -43,7 +43,7 @@ export const AestheticLinkButton = () => {
   return (
     <LinkButtonComponent
       btnText="See All Products"
-      href="/all-products"
+      href="/products"
       showGradient={true}
       Icon={{
         Img: HiShoppingCart,
