@@ -1,4 +1,5 @@
 import Navbar from "./navbar";
+import Footer from "./footer";
 import { CustomButton, CustomButtonUnstyled } from "./button";
 import LinkButton from "./link-button";
 import TopHeader from "./top-header";
@@ -15,6 +16,7 @@ import {
 
 export {
   Navbar as NavbarComponent,
+  Footer as FooterComponent,
   CustomButton as CustomButtonComponent,
   CustomButtonUnstyled as CustomButtonUnstyledComponent,
   LinkButton as LinkButtonComponent,

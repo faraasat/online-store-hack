@@ -7,7 +7,7 @@ import {
 } from "next/font/google";
 
 import { ThemeProvider } from "./providers";
-import { NavbarComponent } from "./components";
+import { NavbarComponent, FooterComponent } from "./components";
 
 import "./globals.css";
 
@@ -96,6 +96,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <main className="flex flex-col w-full overflow-hidden min-h-[100vh] h-auto pt-[75px]">
             {children}
           </main>
+          <FooterComponent />
         </ThemeProvider>
       </body>
     </html>
