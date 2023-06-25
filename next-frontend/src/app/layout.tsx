@@ -6,6 +6,8 @@ import {
   Pridi,
 } from "next/font/google";
 
+import { ClerkProvider } from "@clerk/nextjs";
+
 import { ThemeProvider } from "./providers";
 import { NavbarComponent, FooterComponent } from "./components";
 
@@ -92,11 +94,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         className={`${mochiy.variable} ${sansita.variable} ${averia.variable} ${pridi.variable} w-full h-full bg-[color:var(--bg-1)]`}
       >
         <ThemeProvider>
-          <NavbarComponent />
-          <main className="flex flex-col w-full overflow-hidden min-h-[100vh] h-auto pt-[75px]">
-            {children}
-          </main>
-          <FooterComponent />
+          <ClerkProvider>
+            <NavbarComponent />
+            <main className="flex flex-col w-full overflow-hidden min-h-[100vh] h-auto pt-[75px]">
+              {children}
+            </main>
+            <FooterComponent />
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>

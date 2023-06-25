@@ -11,6 +11,8 @@ import {
   smallNavigationData,
 } from "@/data";
 
+import styles from "../styles.module.css";
+
 const NavDropDown = dynamic(() => import("./nav-dropdown"), {
   ssr: false,
 });
@@ -22,11 +24,7 @@ export const HeaderWrapper = ({
 }) => {
   return (
     <header
-      className={`w-full fixed text-[color:var(--primary-1)] h-[80px] flex justify-center items-center py-[10px] max-md:h-[80px] max-md:flex-col z-[5000] max-md:justify-start bg-[color:rgba(var(--bg-1-color),0.8)]`}
-      style={{
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-      }}
+      className={`w-full fixed text-[color:var(--primary-1)] h-[80px] flex justify-center items-center py-[10px] bg-[color:rgba(var(--bg-1-color),0.8)] max-md:h-[80px] max-md:flex-col z-[5000] max-md:justify-start ${styles.blur}`}
     >
       {children}
     </header>
