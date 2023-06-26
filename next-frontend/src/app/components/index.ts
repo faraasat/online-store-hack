@@ -6,6 +6,7 @@ import TopHeader from "./top-header";
 import TextInput from "./text-input";
 import TextArea from "./text-input-box";
 import SelectInput from "./select-input";
+import Item from "./item";
 
 import {
   ICustomButton,
@@ -24,6 +25,7 @@ export {
   TextInput as TextInputComponent,
   SelectInput as SelectInputComponent,
   TextArea as TextAreaComponent,
+  Item as ItemComponent,
 };
 
 export type { ICustomButton, ICustomButtonUnstyled, ILinkButton, ITopHeader };

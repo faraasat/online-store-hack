@@ -4,9 +4,9 @@ import { useState } from "react";
 
 import { FaShoppingCart } from "react-icons/fa";
 
-import { CustomButton } from "../components/button";
+import { CustomButton } from "../button";
 
-import { IProducts } from "../types";
+import { IProducts } from "../../types";
 
 export const AddToCartButton = ({ products }: { products: IProducts }) => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ export const AddToCartButton = ({ products }: { products: IProducts }) => {
         position: "right",
         Img: FaShoppingCart,
       }}
-      className="py-3 px-5 text-white"
+      className="py-3 px-5 text-white hover:text-[color:var(--primary-1)]"
     />
   );
 };
