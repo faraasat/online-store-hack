@@ -1,5 +1,5 @@
 import { TopHeaderComponent } from "@/app/components";
-import { CartClient } from "./cart-client";
+import { CartClient } from "./client";
 
 const ProductPage = async () => {
   return (

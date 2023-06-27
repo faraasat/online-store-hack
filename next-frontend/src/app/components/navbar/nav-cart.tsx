@@ -14,7 +14,7 @@ import CartItem from "../cart-item";
 import LinkButton from "../link-button";
 
 const MyCart = ({ navWidth }: { navWidth?: string }) => {
-  const { cart } = useContext(CartContext);
+  const { cart, loading } = useContext(CartContext);
 
   let myCart: ICart[] = [];
 
@@ -43,16 +43,26 @@ const MyCart = ({ navWidth }: { navWidth?: string }) => {
             <div
               className={`flex flex-col py-8 px-5 gap-3 transition-all ${styles.blur}`}
             >
-              {myCart.length > 0 ? (
-                <>
-                  {myCart.map((myc) => {
-                    return <CartItem key={myc._id + myc.sized} cart={myc} />;
-                  })}
-                </>
-              ) : (
+              {loading ? (
                 <div className="font-sansita text-[18px] text-center py-4">
-                  No Item in Cart!
+                  Loading...
                 </div>
+              ) : (
+                <>
+                  {myCart.length > 0 ? (
+                    <div className="flex flex-col gap-3 min-h-[350px] max-h-[calc(100vh-250px)] pr-[10px] overflow-y-auto">
+                      {myCart.map((myc) => {
+                        return (
+                          <CartItem key={myc._id + myc.sized} cart={myc} />
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="font-sansita text-[18px] text-center py-4">
+                      No Item in Cart!
+                    </div>
+                  )}
+                </>
               )}
               <LinkButton
                 href="/cart"

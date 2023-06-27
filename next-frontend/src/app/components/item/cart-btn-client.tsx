@@ -22,7 +22,7 @@ export const AddToCartButton = ({ products }: { products: IProducts }) => {
         position: "right",
         Img: FaShoppingCart,
       }}
-      className="py-3 px-5 text-white hover:text-[color:var(--primary-1)]"
+      className="py-3 px-5"
       onClick={() => updateCart({ ...products, sized: products.sized[0] })}
     />
   );

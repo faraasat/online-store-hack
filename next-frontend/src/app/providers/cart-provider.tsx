@@ -33,28 +33,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setCart(localCart.getCart());
+    setCart(localCart.getCart().reverse());
     setLoading(false);
   }, []);
 
   const updateCart = (productData: ICart) => {
     localCart.updateCart(productData);
-    setCart(localCart.getCart());
+    setCart(localCart.getCart().reverse());
   };
 
   const incrementItem = (_id: string, sized: string) => {
     localCart.incrementQuantity(_id, sized);
-    setCart(localCart.getCart());
+    setCart(localCart.getCart().reverse());
   };
 
   const decrementItem = (_id: string, sized: string) => {
     localCart.decrementQuantity(_id, sized);
-    setCart(localCart.getCart());
+    setCart(localCart.getCart().reverse());
   };
 
   const removeItem = (_id: string, sized: string) => {
     localCart.removeFromCart(_id, sized);
-    setCart(localCart.getCart());
+    setCart(localCart.getCart().reverse());
   };
 
   const getCart = () => {
