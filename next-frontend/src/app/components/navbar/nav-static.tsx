@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import { ReactNode } from "react";
 import Link from "next/link";
+
+import { useAuth } from "@clerk/nextjs";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 import { Logo } from "@/app/internal-assets";
@@ -66,6 +68,8 @@ export const MainNavWrapper = ({
 }: {
   children: JSX.Element | JSX.Element[];
 }) => {
+  const { isLoaded, userId, sessionId } = useAuth();
+
   return (
     <div className="2xl:max-w-[1400px] w-[90%] flex items-center justify-between">
       <div className="flex relative self-start">
@@ -97,6 +101,21 @@ export const MainNavWrapper = ({
             </div>
           );
         })}
+        {isLoaded && sessionId && (
+          <div
+            className={`flex text-[color:var(--primary-1)] leading-[1] items-center group`}
+          >
+            <Link href={"/orders"}>
+              <LinkItems
+                nd={{
+                  name: "Orders",
+                  url: "/orders",
+                  dropdown: false,
+                }}
+              />
+            </Link>
+          </div>
+        )}
       </nav>
       {children}
     </div>

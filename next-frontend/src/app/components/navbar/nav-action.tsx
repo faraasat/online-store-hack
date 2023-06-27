@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { HeaderWrapper, MainNavWrapper, SmallNavContent } from "./nav-static";
+import { NavAuthBtn } from "./nav-auth";
 
 const NavTheme = dynamic(() => import("./nav-theme-settings"), {
   ssr: false,
@@ -26,12 +27,15 @@ const NavbarAction = () => {
   return (
     <HeaderWrapper>
       <MainNavWrapper>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <div
             className="border border-[color:var(--primary-1])] rounded-md w-[33px] h-[33px] cursor-pointer flex justify-center items-center md:hidden"
             onClick={() => setOpen((prev) => !prev)}
           >
             <GiHamburgerMenu className="text-[23px]" />
+          </div>
+          <div className="cursor-pointer">
+            <NavAuthBtn />
           </div>
           <div className="cursor-pointer">
             <MyCart />
