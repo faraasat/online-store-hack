@@ -1,3 +1,4 @@
 import ThemeProvider from "./theme-provider";
+import { CartContext, CartProvider } from "./cart-provider";
 
-export { ThemeProvider };
+export { ThemeProvider, CartContext, CartProvider };

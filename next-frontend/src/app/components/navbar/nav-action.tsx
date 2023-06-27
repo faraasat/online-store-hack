@@ -3,11 +3,9 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-// import { TbPlugConnected } from "react-icons/tb";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { HeaderWrapper, MainNavWrapper, SmallNavContent } from "./nav-static";
-// import { CustomButtonComponent } from "..";
 
 const NavTheme = dynamic(() => import("./nav-theme-settings"), {
   ssr: false,
@@ -16,6 +14,10 @@ const NavTheme = dynamic(() => import("./nav-theme-settings"), {
       <AiOutlineLoading3Quarters className="animate-spin text-[28px] text-[color:var(--primary-1)]" />
     </div>
   ),
+});
+
+const MyCart = dynamic(() => import("./nav-cart"), {
+  ssr: false,
 });
 
 const NavbarAction = () => {
@@ -30,6 +32,9 @@ const NavbarAction = () => {
             onClick={() => setOpen((prev) => !prev)}
           >
             <GiHamburgerMenu className="text-[23px]" />
+          </div>
+          <div className="cursor-pointer">
+            <MyCart />
           </div>
           <div className="cursor-pointer">
             <NavTheme />

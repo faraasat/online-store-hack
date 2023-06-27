@@ -7,6 +7,7 @@ import TextInput from "./text-input";
 import TextArea from "./text-input-box";
 import SelectInput from "./select-input";
 import Item from "./item";
+import CartItem from "./cart-item";
 
 import {
   ICustomButton,
@@ -26,6 +27,7 @@ export {
   SelectInput as SelectInputComponent,
   TextArea as TextAreaComponent,
   Item as ItemComponent,
+  CartItem as CartItemComponent,
 };
 
 export type { ICustomButton, ICustomButtonUnstyled, ILinkButton, ITopHeader };

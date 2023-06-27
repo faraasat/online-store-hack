@@ -4,6 +4,8 @@ import {
   countryList,
   categoryList,
   sizesList,
+  countryToCodeData,
+  countryToEmojiData,
 } from "./data";
 
 import { INavigationData, INavigationWithDropDown } from "./data.d";
@@ -14,6 +16,8 @@ export {
   countryList,
   categoryList,
   sizesList,
+  countryToCodeData,
+  countryToEmojiData,
 };
 
 export type { INavigationData, INavigationWithDropDown };

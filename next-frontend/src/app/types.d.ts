@@ -1,3 +1,6 @@
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { TypedObject } from "sanity";
+
 export interface IProducts {
   _id: string;
   _createdAt: string;
@@ -5,14 +8,14 @@ export interface IProducts {
   name: string;
   productType: string;
   price: number;
-  description: Array<Array<Object>>;
+  description: TypedObject | TypedObject[];
   categories: Array<string>;
   quantity: number;
   brand: string;
   origin: string;
   images: Array<string>;
   alt: Array<string>;
-  sizes: Array<string>;
+  sized: Array<string>;
 }
 
 export interface ICart {
@@ -26,11 +29,22 @@ export interface ICart {
   origin: string;
   images: Array<string>;
   alt: Array<string>;
-  size: string;
+  sized: string;
 }
 
 export interface ICartReq {
   _id: string;
   quantity: number;
-  size: string;
+  sized: string;
+}
+
+export interface IProductDetails {
+  productData: IProducts;
+  children: ReactNode;
+  setProSize: Dispatch<SetStateAction<string>>;
+}
+
+export interface ICustomRadioSize {
+  sizes: Array<string>;
+  setProSize: Dispatch<SetStateAction<string>>;
 }

@@ -8,7 +8,7 @@ import {
 
 import { ClerkProvider } from "@clerk/nextjs";
 
-import { ThemeProvider } from "./providers";
+import { CartProvider, ThemeProvider } from "./providers";
 import { NavbarComponent, FooterComponent } from "./components";
 
 import "./globals.css";
@@ -95,11 +95,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <ThemeProvider>
           <ClerkProvider>
-            <NavbarComponent />
-            <main className="flex flex-col w-full overflow-hidden min-h-[100vh] h-auto pt-[75px]">
-              {children}
-            </main>
-            <FooterComponent />
+            <CartProvider>
+              <NavbarComponent />
+              <main className="flex flex-col w-full overflow-hidden min-h-[100vh] h-auto pt-[75px]">
+                {children}
+              </main>
+              <FooterComponent />
+            </CartProvider>
           </ClerkProvider>
         </ThemeProvider>
       </body>

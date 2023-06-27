@@ -1,0 +1,14 @@
+.radio_size:checked + div {
+  background-color: var(--bg-2);
+  transition: all 0.2s ease-in-out;
+  color: var(--primary-1);
+  font-weight: bold;
+}
+
+.radio_size + div {
+  background-color: var(--primary-2);
+  transition: all 0.2s ease-in-out;
+  color: var(--primary-1);
+  font-weight: bold;
+  box-shadow: 0px 0px 1px 1px rgba(var(--primary-1-color), 0.2);
+}
