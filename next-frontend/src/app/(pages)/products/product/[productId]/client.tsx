@@ -4,7 +4,7 @@ import { FC, useContext, useState } from "react";
 
 import { FaShoppingCart } from "react-icons/fa";
 
-import { ProductDetails } from "./page";
+import { ProductDetails } from "./static";
 import { CustomButton } from "@/app/components/button";
 import { CartContext } from "@/app/providers";
 

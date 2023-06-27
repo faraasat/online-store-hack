@@ -23,18 +23,18 @@ const MyCart = ({ navWidth }: { navWidth?: string }) => {
   }
 
   return (
-    <div className="group">
+    <div className="relative group flex justify-center">
       <div className="relative flex items-center justify-center">
         <div className="absolute right-0 top-0 bg-[color:var(--bg-3)] text-[color:var(--primary-1)] p-1 w-[20px] h-[20px] rounded-full flex items-center justify-center text-[14px] translate-x-[8px] translate-y-[-8px]">
           {myCart.length > 10 ? "10+" : myCart.length}
         </div>
         <FaShoppingCart className="text-[25px]" />
       </div>
-      <div className="hidden group-hover:flex group-hover:flex-col items-center">
-        <div className="flex absolute rotate-180 mt-[0px] transition-all">
+      <div className="hidden absolute group-hover:flex group-hover:flex-col items-center translate-x-[-30px]">
+        {/* <div className="flex rotate-180 mt-[0px] transition-all">
           <IoMdArrowDropdown className="text-[40px]" />
-        </div>
-        <div className="flex group-hover:flex-col absolute pt-[19px] mt-[5px] text-[color:var(--primary-1)]">
+        </div> */}
+        <div className="flex group-hover:flex-col pt-[19px] mt-[20px] text-[color:var(--primary-1)]">
           <div
             className={`bg-[color:rgba(var(--bg-1-color),0.8)] shadow-[0px_0px_2px_1px_rgba(var(--primary-1-color),0.5)] rounded-lg ${
               navWidth ? navWidth : "w-[230px]"

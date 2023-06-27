@@ -13,19 +13,19 @@ export const CartClient = ({ _id, sized }: { _id: string; sized: string }) => {
   return (
     <div className="flex items-center justify-center gap-3 mt-[10px]">
       <div
-        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:color-white transition-colors"
+        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:text-white transition-colors"
         onClick={() => incrementItem(_id, sized)}
       >
         <AiOutlinePlus />
       </div>
       <div
-        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:color-white transition-colors"
+        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:text-white transition-colors"
         onClick={() => decrementItem(_id, sized)}
       >
         <AiOutlineMinus />
       </div>
       <div
-        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:color-white transition-colors"
+        className="flex text-[15px] items-center justify-center border p-[5px] rounded-md hover:bg-[color:var(--primary-1)] hover:text-white transition-colors"
         onClick={() => removeItem(_id, sized)}
       >
         <BsTrashFill />
