@@ -42,8 +42,8 @@ const getRedirectUrls = (
     proto = "https";
   }
 
-  successUrl = `${proto}://${hostName}/order/success`;
-  cancelUrl = `${proto}://${hostName}/cart`;
+  successUrl = `${proto}://${hostName}/orders/success?session_id={CHECKOUT_SESSION_ID}"`;
+  cancelUrl = `${proto}://${hostName}/cart?status=order-failed`;
   return { success_url: successUrl, cancel_url: cancelUrl };
 };
 

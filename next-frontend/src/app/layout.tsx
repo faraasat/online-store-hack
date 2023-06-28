@@ -11,7 +11,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { CartProvider, ThemeProvider } from "./providers";
 import { NavbarComponent, FooterComponent } from "./components";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
+import { ToastContainerClient } from "./utils";
 
 const mochiy = Mochiy_Pop_One({
   variable: "--mochiy-font",
@@ -104,6 +106,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             </CartProvider>
           </ClerkProvider>
         </ThemeProvider>
+        <ToastContainerClient />
       </body>
     </html>
   );

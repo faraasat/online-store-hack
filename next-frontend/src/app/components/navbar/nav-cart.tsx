@@ -37,7 +37,7 @@ const MyCart = ({ navWidth }: { navWidth?: string }) => {
         <div className="flex group-hover:flex-col pt-[19px] mt-[20px] text-[color:var(--primary-1)]">
           <div
             className={`bg-[color:rgba(var(--bg-1-color),0.8)] shadow-[0px_0px_2px_1px_rgba(var(--primary-1-color),0.5)] rounded-lg ${
-              navWidth ? navWidth : "w-[230px]"
+              navWidth ? navWidth : "w-[250px]"
             } ${styles.blur}`}
           >
             <div
@@ -50,7 +50,9 @@ const MyCart = ({ navWidth }: { navWidth?: string }) => {
               ) : (
                 <>
                   {myCart.length > 0 ? (
-                    <div className="flex flex-col gap-3 min-h-[350px] max-h-[calc(100vh-250px)] pr-[10px] overflow-y-auto">
+                    <div
+                      className={`flex flex-col gap-3 min-h-[350px] max-h-[calc(100vh-250px)] pr-[10px] overflow-y-auto ${styles.scroll_override}`}
+                    >
                       {myCart.map((myc) => {
                         return (
                           <CartItem key={myc._id + myc.sized} cart={myc} />

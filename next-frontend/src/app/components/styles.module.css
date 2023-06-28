@@ -5,6 +5,16 @@
   -webkit-backdrop-filter: blur(20px);
 }
 
+.scroll_override::-webkit-scrollbar {
+  width: 5px !important;
+  border-radius: 999999px;
+}
+
+.scroll_override::-webkit-scrollbar-track {
+  border-radius: 5px !important;
+  border-radius: 999999px;
+}
+
 /* Button */
 
 .btnGradientBorder {

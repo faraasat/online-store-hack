@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import { useAuth, useUser } from "@clerk/nextjs";
 import { HiMinus, HiPlus } from "react-icons/hi";
@@ -10,7 +11,7 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import { CartContext } from "@/app/providers";
 import { CustomButton } from "@/app/components/button";
 import { CartItem } from "./static";
-import { getStripe } from "@/app/utils";
+import { getStripe, toastError } from "@/app/utils";
 
 import { ICart } from "@/app/types";
 
@@ -91,7 +92,7 @@ export const CheckoutBtn = ({ cart }: { cart: ICart[] }) => {
       try {
         setBtnText("Fetching Relevant Information");
         setLoading(true);
-        
+
         const response = await fetch("/api/stripe-checkout", {
           method: "POST",
           body: JSON.stringify({
@@ -112,7 +113,7 @@ export const CheckoutBtn = ({ cart }: { cart: ICart[] }) => {
 
         const stripe = await getStripe();
 
-        const result = await stripe.redirectToCheckout({
+        const result = await stripe!.redirectToCheckout({
           sessionId,
         });
 
@@ -151,4 +152,20 @@ export const CheckoutBtn = ({ cart }: { cart: ICart[] }) => {
       )}
     </>
   );
+};
+
+export const CheckParams = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (searchParams.get("status") === "order-failed") {
+      toastError("submission-fail-stripe", "Order Submission Failed");
+      setTimeout(() => {
+        router.push("/cart", {});
+      }, 2000);
+    }
+  }, []);
+
+  return <></>;
 };
