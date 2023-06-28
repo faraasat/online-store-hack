@@ -1,7 +1,14 @@
+import Image from "next/image";
+import { Metadata } from "next";
+
 import { TopHeaderComponent } from "@/app/components";
 import { About } from "@/assets";
 import { aboutData } from "@/data/data";
-import Image from "next/image";
+
+export const metadata: Metadata = {
+  title:
+    "About Us - Xenrir - Discover Your Fashion Essence, Embrace Limitless Style!",
+};
 
 const AboutPage = () => {
   return (
@@ -17,12 +24,15 @@ const AboutPage = () => {
                 fill
                 draggable={false}
                 style={{ objectFit: "cover" }}
+                placeholder="blur"
               />
             </div>
           </div>
           <div className="w-[100%-500px-30px]">
             {aboutData.map((ad, i) => (
-              <p key={i} className="text-[20px] mb-[20px]">{ad}</p>
+              <p key={i} className="text-[20px] mb-[20px]">
+                {ad}
+              </p>
             ))}
           </div>
         </div>

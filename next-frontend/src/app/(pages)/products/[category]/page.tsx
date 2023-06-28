@@ -1,6 +1,9 @@
+import { Metadata } from "next";
+
 import { ItemComponent, TopHeaderComponent } from "@/app/components";
-import { IProducts } from "@/app/types";
 import { getLatestProductsByCategory } from "@/sanity/schema/sanity-utils";
+
+import { IProducts } from "@/app/types";
 
 export async function generateStaticParams() {
   return [{ category: "men" }, { category: "women" }, { category: "kids" }];
@@ -9,6 +12,20 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 
 type category = "men" | "women" | "kids";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { category: category };
+}): Promise<Metadata> {
+  const { category } = params;
+
+  return {
+    title: `${
+      category.charAt(0).toUpperCase() + category.slice(1)
+    } - Xenrir - Discover Your Fashion Essence, Embrace Limitless Style!`,
+  };
+}
 
 const ProductByCategoryPage = async ({
   params,

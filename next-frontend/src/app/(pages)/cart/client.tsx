@@ -1,13 +1,16 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
+import { useAuth, useUser } from "@clerk/nextjs";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 import { CartContext } from "@/app/providers";
 import { CustomButton } from "@/app/components/button";
 import { CartItem } from "./static";
+import { getStripe } from "@/app/utils";
 
 import { ICart } from "@/app/types";
 
@@ -73,6 +76,79 @@ export const UpdateCart = ({ cart }: { cart: ICart }) => {
           className="py-3 px-7"
         />
       </div>
+    </>
+  );
+};
+
+export const CheckoutBtn = ({ cart }: { cart: ICart[] }) => {
+  const { isLoaded, sessionId: sId, userId } = useAuth();
+  const { user } = useUser();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [btnText, setBtnText] = useState("Checkout");
+
+  const startCheckout = () => {
+    (async () => {
+      try {
+        setBtnText("Fetching Relevant Information");
+        setLoading(true);
+        
+        const response = await fetch("/api/stripe-checkout", {
+          method: "POST",
+          body: JSON.stringify({
+            cartItems: cart,
+            userAuth: {
+              userName: user?.fullName,
+              userId: userId,
+              sessionId: sId,
+            },
+          }),
+        });
+        const data = await response.json();
+        console.log(data);
+
+        setBtnText("Redirecting to Stripe");
+
+        const { sessionId } = data;
+
+        const stripe = await getStripe();
+
+        const result = await stripe.redirectToCheckout({
+          sessionId,
+        });
+
+        console.log(result);
+
+        setBtnText("Checkout");
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        setBtnText("Checkout");
+      }
+    })();
+  };
+
+  return (
+    <>
+      {!isLoaded ? (
+        <div></div>
+      ) : isLoaded && !sId ? (
+        <div className="w-full justify-center items-center text-center text-[25px] font-bold font-mochiy text-[color:var(--accent-2)]">
+          Please Login to Checkout
+        </div>
+      ) : (
+        <CustomButton
+          btnText={btnText}
+          onClick={startCheckout}
+          loading={loading}
+          disabled={loading}
+          showGradient={!loading}
+          Icon={{
+            Img: BsFillCartCheckFill,
+            position: "right",
+          }}
+          className="py-3 px-12"
+        />
+      )}
     </>
   );
 };

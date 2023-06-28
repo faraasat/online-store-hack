@@ -14,6 +14,7 @@ interface ICartContext {
   incrementItem: (_id: string, sized: string) => void;
   decrementItem: (_id: string, sized: string) => void;
   removeItem: (_id: string, sized: string) => void;
+  clearCart: () => void;
 }
 
 const initialValue = {
@@ -24,6 +25,7 @@ const initialValue = {
   incrementItem: (_id: string, sized: string) => {},
   decrementItem: (_id: string, sized: string) => {},
   removeItem: (_id: string, sized: string) => {},
+  clearCart: () => {},
 };
 
 export const CartContext = createContext<ICartContext>(initialValue);
@@ -61,6 +63,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     localCart.getCart();
   };
 
+  const clearCart = () => {
+    localStorage.setItem("cart", JSON.stringify([]));
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -71,6 +77,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         incrementItem,
         decrementItem,
         removeItem,
+        clearCart,
       }}
     >
       {children}

@@ -1,5 +1,12 @@
+import { Metadata } from "next";
+
 import { TopHeaderComponent } from "@/app/components";
 import { CartClient } from "./client";
+
+export const metadata: Metadata = {
+  title:
+    "Your Cart - Xenrir - Discover Your Fashion Essence, Embrace Limitless Style!",
+};
 
 const ProductPage = async () => {
   return (

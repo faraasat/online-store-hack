@@ -1,8 +1,22 @@
+import { Metadata } from "next";
+
 import { TopHeaderComponent } from "@/app/components";
 import { getProductData } from "@/sanity/schema/sanity-utils";
 import { ProductDetailsWithBtn } from "./client";
 
 import { IProducts } from "@/app/types";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { productId: string };
+}): Promise<Metadata> {
+  const productData: IProducts = (await getProductData(params.productId))[0];
+
+  return {
+    title: `${productData.name} - Xenrir - Discover Your Fashion Essence, Embrace Limitless Style!`,
+  };
+}
 
 const ProductPage = async ({ params }: { params: { productId: string } }) => {
   const { productId } = params;

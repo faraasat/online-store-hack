@@ -1,3 +1,4 @@
 import { Cart, cart } from "./cart";
+import getStripe from "./stripe";
 
-export { Cart, cart };
+export { Cart, cart, getStripe };

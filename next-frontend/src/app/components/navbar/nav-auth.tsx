@@ -7,7 +7,7 @@ export const NavAuthBtn = () => {
         <UserButton afterSignOutUrl="/" />
       </SignedIn>
       <SignedOut>
-        <SignInButton mode={"modal"} />
+        <SignInButton mode={"modal"} redirectUrl={window.location.href} />
       </SignedOut>
     </>
   );

@@ -1,6 +1,14 @@
+import { Metadata } from "next";
+
 import { ItemComponent, TopHeaderComponent } from "@/app/components";
-import { IProducts } from "@/app/types";
 import { getAllProductData } from "@/sanity/schema/sanity-utils";
+
+import { IProducts } from "@/app/types";
+
+export const metadata: Metadata = {
+  title:
+    "All Products - Xenrir - Discover Your Fashion Essence, Embrace Limitless Style!",
+};
 
 const ProductPage = async () => {
   const catData = await getAllProductData();
