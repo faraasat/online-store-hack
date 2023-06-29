@@ -37,19 +37,18 @@ const webhookHandler = async (req: NextRequest) => {
 
     const stData = event.data.object as any;
 
-    try {
-      // console.log(stData);
-      const abc = await stripe.checkout.sessions.listLineItems(stData.id);
-      console.log(abc);
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Unknown error";
-      if (err! instanceof Error) console.log(err);
-      console.log(`❌ Session Error message: ${errorMessage}`);
+    let productsData: unknown;
 
+    try {
+      productsData = await stripe.checkout.sessions.listLineItems(stData.id, {
+        expand: ["data.price.product"],
+      });
+    } catch (err) {
+      console.log(err);
       return NextResponse.json(
         {
           error: {
-            message: `Session Webhook Error: ${errorMessage}`,
+            message: `List Item Error: ${err}`,
           },
         },
         { status: 400 }
@@ -59,10 +58,7 @@ const webhookHandler = async (req: NextRequest) => {
     switch (event.type) {
       case "customer.subscription.created":
         break;
-      case "order.created":
-        break;
       default:
-        // console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
         break;
     }
 

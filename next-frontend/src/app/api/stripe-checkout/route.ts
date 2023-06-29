@@ -42,7 +42,7 @@ const getRedirectUrls = (
     proto = "https";
   }
 
-  successUrl = `${proto}://${hostName}/orders/success?session_id={CHECKOUT_SESSION_ID}"`;
+  successUrl = `${proto}://${hostName}/orders/success?order_id={CHECKOUT_SESSION_ID}`;
   cancelUrl = `${proto}://${hostName}/cart?status=order-failed`;
   return { success_url: successUrl, cancel_url: cancelUrl };
 };
@@ -119,6 +119,7 @@ export async function POST(req: Request) {
             metadata: {
               size: item.sized,
               _id: item._id,
+              brand: item.brand,
             },
           },
           unit_amount: item.price * 100,
