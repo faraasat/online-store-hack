@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { HeaderWrapper, MainNavWrapper, SmallNavContent } from "./nav-static";
-import { NavAuthBtn } from "./nav-auth";
+// import NavAuthBtn from "./nav-auth";
 
 const NavTheme = dynamic(() => import("./nav-theme-settings"), {
   ssr: false,
@@ -18,6 +18,10 @@ const NavTheme = dynamic(() => import("./nav-theme-settings"), {
 });
 
 const MyCart = dynamic(() => import("./nav-cart"), {
+  ssr: false,
+});
+
+const NavAuthBtn = dynamic(() => import("./nav-auth"), {
   ssr: false,
 });
 

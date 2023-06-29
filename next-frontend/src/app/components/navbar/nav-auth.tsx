@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
-export const NavAuthBtn = () => {
+const NavAuthBtn = () => {
   return (
     <>
       <SignedIn>
@@ -12,3 +12,5 @@ export const NavAuthBtn = () => {
     </>
   );
 };
+
+export default NavAuthBtn;
