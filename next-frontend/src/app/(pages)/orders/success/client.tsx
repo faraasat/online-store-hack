@@ -59,7 +59,7 @@ export const CheckOrderParams = () => {
               data.data.data &&
               data.data.data.length > 0
             ) {
-              // clearCart()
+              clearCart();
               setLoading(false);
               setItems(data.data.data);
             } else {
