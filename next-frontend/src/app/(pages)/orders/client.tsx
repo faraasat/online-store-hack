@@ -38,6 +38,7 @@ export const OrderList = () => {
       searchParam.get("filter") !== "Cancelled" &&
       searchParam.get("filter") !== "Shipped"
     ) {
+      router.replace("/orders?filter=All");
       setFilteredData([...orderData]);
     } else {
       if (searchParam.get("filter") === "All") {
@@ -82,7 +83,6 @@ export const OrderList = () => {
           return od;
         });
       }
-      console.log(newData);
       setOrderData(newData);
       setCancelLoading(false);
     } catch (error) {
