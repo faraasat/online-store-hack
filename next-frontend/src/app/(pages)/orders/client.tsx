@@ -1,7 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  useRouter,
+  useSearchParams,
+  useParams,
+  usePathname,
+} from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { useAuth } from "@clerk/nextjs";
@@ -19,6 +23,8 @@ export const OrderList = () => {
   const { isLoaded, userId } = useAuth();
   const searchParam = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
+
   const [orderData, setOrderData] = useState<Array<Orders>>([]);
   const [filteredData, setFilteredData] = useState<Array<Orders>>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,12 +32,12 @@ export const OrderList = () => {
 
   useEffect(() => {
     if (
+      pathname === "/orders" &&
       searchParam.get("filter") !== "All" &&
       searchParam.get("filter") !== "Processing" &&
       searchParam.get("filter") !== "Cancelled" &&
       searchParam.get("filter") !== "Shipped"
     ) {
-      router.push("/orders?filter=All");
       setFilteredData([...orderData]);
     } else {
       if (searchParam.get("filter") === "All") {
@@ -52,7 +58,7 @@ export const OrderList = () => {
       if (isLoaded) {
         try {
           const data: Array<Orders> = await getOrders(userId!);
-          setOrderData(data);
+          setOrderData(data.reverse());
           setLoading(false);
         } catch (error) {
           console.log(error);
@@ -88,9 +94,9 @@ export const OrderList = () => {
   return (
     <div className="flex flex-col w-full items-center justify-center">
       <div className="flex items-center self-start gap-5 mb-[30px] mt-[35px]">
-        <Link
-          href="/orders?filter=All"
-          className="py-3 px-5 rounded-md text-[22px]"
+        <div
+          onClick={() => router.replace("/orders?filter=All")}
+          className="py-3 px-5 rounded-md text-[22px] cursor-pointer"
           style={{
             backgroundColor:
               searchParam.get("filter") !== "Processing" &&
@@ -101,10 +107,10 @@ export const OrderList = () => {
           }}
         >
           All
-        </Link>
-        <Link
-          href="/orders?filter=Processing"
-          className="py-3 px-5 rounded-md text-[22px]"
+        </div>
+        <div
+          onClick={() => router.replace("/orders?filter=Processing")}
+          className="py-3 px-5 rounded-md text-[22px] cursor-pointer"
           style={{
             backgroundColor:
               searchParam.get("filter") === "Processing"
@@ -113,10 +119,10 @@ export const OrderList = () => {
           }}
         >
           Processing
-        </Link>
-        <Link
-          href="/orders?filter=Cancelled"
-          className="py-3 px-5 rounded-md text-[22px]"
+        </div>
+        <div
+          onClick={() => router.replace("/orders?filter=Cancelled")}
+          className="py-3 px-5 rounded-md text-[22px] cursor-pointer"
           style={{
             backgroundColor:
               searchParam.get("filter") === "Cancelled"
@@ -125,10 +131,10 @@ export const OrderList = () => {
           }}
         >
           Cancelled
-        </Link>
-        <Link
-          href="/orders?filter=Shipped"
-          className="py-3 px-5 rounded-md text-[22px]"
+        </div>
+        <div
+          onClick={() => router.replace("/orders?filter=Shipped")}
+          className="py-3 px-5 rounded-md text-[22px] cursor-pointer"
           style={{
             backgroundColor:
               searchParam.get("filter") === "Shipped"
@@ -137,7 +143,7 @@ export const OrderList = () => {
           }}
         >
           Shipped
-        </Link>
+        </div>
       </div>
       {loading ? (
         <div className="flex items-center justify-center gap-4 font-mochiy text-[30px] pt-[60px]">
