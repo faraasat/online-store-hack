@@ -1,3 +1,5 @@
+import "../../globals.css";
+
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>

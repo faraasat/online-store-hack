@@ -1,7 +1,11 @@
 "use client";
 
-import { NextStudio } from "next-sanity/studio";
+const NextStudio = dynamic(() =>
+  import("next-sanity/studio").then((mod) => mod.NextStudio)
+);
+
 import config from "@/sanity.config";
+import dynamic from "next/dynamic";
 
 const AdminPage = () => {
   return <NextStudio config={config} />;
