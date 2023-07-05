@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 
 export default authMiddleware({
   afterAuth: (auth, req, evt) => {
-    if (
+    if (req.nextUrl.pathname.startsWith("/orders") && !auth.sessionId) {
+      return NextResponse.redirect(`${req.nextUrl.origin}/sign-in`);
+    } else if (
       req.nextUrl.pathname === "/orders/success" &&
       !req.nextUrl.searchParams.get("order_id")
     ) {

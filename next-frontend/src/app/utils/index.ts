@@ -9,6 +9,7 @@ import {
   toastWarning,
   toastInfo,
 } from "./toast";
+import { ScrollToTop } from "./scroll-to-top";
 
 export {
   Cart,
@@ -21,4 +22,5 @@ export {
   toastError,
   toastWarning,
   toastInfo,
+  ScrollToTop,
 };
